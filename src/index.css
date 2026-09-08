@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.65rem;
+    /* Warm "Claude" palette */
+    --clay: 15 63% 60%;
+    --ink: 30 8% 12%;
+    --parchment: 40 33% 97%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    @apply antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Respect users who prefer less motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Token chips in the tokenizer visualiser */
+  .token-chip {
+    @apply inline-block rounded px-[3px] py-[1px] font-mono text-[13px] leading-relaxed whitespace-pre-wrap;
+  }
+
+  .prose-tight p {
+    @apply leading-relaxed;
+  }
+}
+
+/* Thin, unobtrusive scrollbars inside panels */
+.scroll-slim::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-slim::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-stone-300 dark:bg-stone-700;
+}
+.scroll-slim::-webkit-scrollbar-track {
+  background: transparent;
+}
