@@ -149,12 +149,29 @@ export function ApiKeyPanel({
         </Alert>
       ) : null}
 
-      <p className="mt-3 text-[11px] leading-relaxed text-stone-500 dark:text-stone-500">
-        This page talks to the Claude API directly from your browser, so your key is never sent to
-        any server but Anthropic's. That is fine for a personal scratchpad — but a real product must
-        keep the key on a backend, because anyone who opens devtools on a page can read a key the
-        page is holding.
-      </p>
+      <div className="mt-3 space-y-1.5 text-[11px] leading-relaxed text-stone-500 dark:text-stone-500">
+        <p>
+          This page has no backend. It talks to the Claude API directly from your browser, so your
+          key goes nowhere except Anthropic — it is not logged, proxied or sent to whoever hosts
+          this site. You can check that yourself: the{' '}
+          <a
+            href="https://github.com/raimonvibe/how-to-use-claude-api/blob/main/src/lib/claude.ts"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-stone-700 dark:hover:text-stone-300"
+          >
+            source is public
+          </a>
+          , and your browser&apos;s network tab shows every request it makes.
+        </p>
+        <p>
+          Even so, treat a key you paste into any website as spent: use one created for
+          experimenting, keep a low spending cap on it, and revoke it in the Console when you are
+          done. And do not copy this pattern into a product of your own — anyone who opens devtools
+          on a page can read a key that page is holding, so real applications keep the key on a
+          server.
+        </p>
+      </div>
     </div>
   )
 }

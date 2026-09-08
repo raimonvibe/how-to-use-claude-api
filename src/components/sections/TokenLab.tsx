@@ -193,6 +193,13 @@ export function TokenLab({ apiKey }: { apiKey: string }) {
             {formatTokens(countForCost)} tokens per call, a million calls on Claude Opus 5 costs{' '}
             {formatUSD(estimateCost(MODELS[1], { input: countForCost * 1_000_000 }).total)}.
           </p>
+          <p className="mt-1.5 text-[11px] text-stone-500 dark:text-stone-500">
+            One caveat: token counts are <strong>model-specific</strong>. The newer models use a
+            different tokeniser from Claude Haiku 4.5, so the same text does not come to the same
+            number of tokens on all four. The row above prices a single Claude Opus 5 count across
+            every model, which is close enough to compare them but is not exact — count against the
+            model you actually intend to call.
+          </p>
         </div>
       </CardContent>
     </Card>
