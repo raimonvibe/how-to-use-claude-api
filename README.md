@@ -1,10 +1,11 @@
 # Claude API Setup Guide
 
+**🌐 Live demo: [how-to-use-claude-api.vercel.app](https://how-to-use-claude-api.vercel.app/)**
+
+![Claude API Setup Guide screenshot](preview.png)
+
 An interactive, beginner-friendly guide to the **Claude API** — read the explanation, then run
 a real request from the same page.
-
-This is a rebuild of [how-to-use-open-ai-api](https://github.com/raimonvibe/how-to-use-open-ai-api)
-for Claude, with the static explainers replaced by things you can actually operate.
 
 ## What it does
 
@@ -33,23 +34,23 @@ hit rate, and compare what each model would cost per month.
 **Concepts you will need next** — streaming, prompt caching, tool use, multi-turn history, batch
 processing, and error handling, each with working code and the mistake it invites.
 
-## What is different from the OpenAI original
+## The idea
 
-The original is a static explainer: you read about API keys, then leave to go and use one. This
-version is built around the idea that you learn an API by calling it.
+Most API guides are static: you read about keys, then leave to go and use one. This is built on
+the premise that you learn an API by calling it, so nothing here is a screenshot or a mock-up.
 
-| | OpenAI version | This version |
+| | A typical setup guide | This one |
 |---|---|---|
-| Token explanation | A fixed example: `"cat"` → `[0.2, -0.1, 0.8, ...]` | Live tokeniser, plus real counts from `count_tokens` |
-| Costs | Prose about a $5 limit | Calculator with current per-model rates |
+| Tokens | A fixed example in prose | Live tokeniser, plus real counts from `count_tokens` |
+| Costs | "Set a $5 limit" | Calculator with current per-model rates |
 | Trying the API | Links out to the docs | Streams a real response in the page |
 | Progress | None | Per-step checkboxes, persisted |
-| Model choice | Not covered | Side-by-side price *and* capability comparison |
-| Key handling | Not applicable | Session-only by default, opt-in persistence, free verification |
+| Model choice | Rarely covered | Side-by-side price *and* capability comparison |
+| Subscription vs API | Conflated, or unmentioned | Answered before you spend anything |
 
-It is also deliberately accurate about the API's sharp edges. Model families disagree about
-what they accept — `effort` is rejected outright by Claude Haiku 4.5, thinking cannot be turned
-off on some models and is off by default on others — so the request builder in
+It is also deliberately accurate about the API's sharp edges. Model families disagree about what
+they accept — `effort` is rejected outright by Claude Haiku 4.5, thinking cannot be turned off on
+some models and is off by default on others — so the request builder in
 [`src/lib/claude.ts`](src/lib/claude.ts) shapes each request to the selected model rather than
 sending one shape and hoping.
 
@@ -78,7 +79,7 @@ opt-ins — the SDK's `dangerouslyAllowBrowser` flag and the
 
 For this page that is the right trade: the key is yours, you type it in, and it goes nowhere
 except Anthropic. It is held in `sessionStorage` and disappears when the tab closes unless you
-tick "remember on this device".
+tick "remember on this device". There is no backend, so there is nothing to log it.
 
 **Do not copy this pattern into a product.** Anyone who can open devtools on a page can read a
 key that page is holding. Real applications keep the key on a server and proxy requests through

@@ -129,8 +129,8 @@ export async function streamMessage(req: StreamRequest): Promise<StreamResult> {
 /**
  * Ask the API how many tokens a piece of text costs on a given model.
  *
- * Token counts are model-specific, and OpenAI tokenisers (tiktoken and
- * friends) are simply wrong for Claude — this endpoint is the only accurate
+ * Token counts are model-specific, and a tokeniser built for a different
+ * model family is simply wrong here — this endpoint is the only accurate
  * answer, and it is free to call.
  */
 export async function countTokens(

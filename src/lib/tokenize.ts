@@ -1,11 +1,11 @@
 /**
  * A local, approximate tokeniser used only for the visualiser.
  *
- * Claude's real tokeniser is not published, and OpenAI's (tiktoken and
- * friends) is materially wrong for Claude — it undercounts by roughly 15-20%
- * on prose and much more on code. So this splitter exists to *show the shape*
- * of tokenisation instantly and offline; the exact number always comes from
- * the `count_tokens` endpoint, which is free to call.
+ * Claude's real tokeniser is not published, and a tokeniser borrowed from
+ * another model family is materially wrong here — those undercount by roughly
+ * 15-20% on prose and much more on code. So this splitter exists to *show the
+ * shape* of tokenisation instantly and offline; the exact number always comes
+ * from the `count_tokens` endpoint, which is free to call.
  */
 
 export interface ApproxToken {

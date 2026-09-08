@@ -166,8 +166,8 @@ export function TokenLab({ apiKey }: { apiKey: string }) {
             </strong>{' '}
             by {Math.abs(tokens.length - exact.tokens)} token
             {Math.abs(tokens.length - exact.tokens) === 1 ? '' : 's'}. This is why you should never
-            bill against a guess — and never use an OpenAI tokeniser for Claude, which undercounts
-            by 15-20% on prose and far more on code.
+            bill against a guess — and never reuse a tokeniser built for a different model family,
+            which can undercount Claude by 15-20% on prose and far more on code.
           </p>
         ) : null}
 
