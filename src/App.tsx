@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { LinkButton, SectionHeading } from '@/components/common'
 import { ApiKeyPanel } from '@/components/ApiKeyPanel'
+import { WhichOne } from '@/components/sections/WhichOne'
 import { Steps, STEP_IDS } from '@/components/sections/Steps'
 import { TokenLab } from '@/components/sections/TokenLab'
 import { Playground } from '@/components/sections/Playground'
@@ -14,6 +15,7 @@ import { keyStore, progressStore, themeStore } from '@/lib/storage'
 import { cn } from '@/lib/utils'
 
 const NAV = [
+  { id: 'which', label: 'Which one?' },
   { id: 'tokens', label: 'Tokens' },
   { id: 'setup', label: 'Setup' },
   { id: 'playground', label: 'Playground' },
@@ -60,7 +62,7 @@ export default function App() {
   const [apiKey, setApiKey] = useState('')
   const [remember, setRemember] = useState(false)
   const [done, setDone] = useState<string[]>([])
-  const [active, setActive] = useState('tokens')
+  const [active, setActive] = useState(NAV[0].id)
   const [menuOpen, setMenuOpen] = useState(false)
 
   // ---- Restore persisted state once, on mount ----
@@ -281,6 +283,27 @@ export default function App() {
               <a href="#playground">Skip to the playground</a>
             </Button>
           </div>
+          <p className="mt-4 text-sm text-stone-500 dark:text-stone-500">
+            Just want Claude to help you code?{' '}
+            <a
+              href="#which"
+              className="font-medium text-orange-700 underline underline-offset-4 hover:text-orange-800 dark:text-orange-400 dark:hover:text-orange-300"
+            >
+              You probably want the $20/month plan, not the API
+            </a>
+            .
+          </p>
+        </section>
+
+        {/* ---------------- Subscription vs API ---------------- */}
+        <section className="mb-16">
+          <SectionHeading
+            id="which"
+            eyebrow="Start here"
+            title="Do you actually need the API?"
+            description="There are two separate ways to pay for Claude, and picking the wrong one wastes money. If you want Claude to help you write code, a $20/month subscription is almost certainly what you want — not this. The API is for putting Claude inside something you are building."
+          />
+          <WhichOne />
         </section>
 
         {/* ---------------- Tokens ---------------- */}

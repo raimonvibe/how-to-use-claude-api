@@ -8,6 +8,11 @@ for Claude, with the static explainers replaced by things you can actually opera
 
 ## What it does
 
+**Do you actually need the API?** — the first thing on the page, because it is the mistake that
+costs people money. A Claude Pro/Max subscription (from $20/month) covers Claude Code and the
+Claude apps; the API is for putting Claude inside something you are building. They are billed
+separately, and a subscription includes **no** API credit.
+
 **Everything is tokens** — a live tokeniser lab. Type anything and watch it get chopped into
 coloured chunks, with a character count, an offline estimate, and — if you have supplied a key —
 the *exact* token count from the API, so you can see how far the guess was off. The same text is
